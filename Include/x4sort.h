@@ -35,8 +35,12 @@ typedef struct {
 x4SortStatusCode x4CheckSortArguments(const x4SortArguments*);
 void x4GenericSwap(void*, void*, const x4ElementSize);
 
+// Exchange sorts:
 x4SortStatusCode x4BubbleSort(const x4SortArguments*);
 x4SortStatusCode x4ShakerSort(const x4SortArguments*);
 x4SortStatusCode x4OddEvenSort(const x4SortArguments*);
+
+// Selection sorts:
+x4SortStatusCode x4SelectionSort(const x4SortArguments*);
 
 #endif // X4_SORT_HEADER_GUARD

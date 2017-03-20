@@ -124,3 +124,35 @@ x4OddEvenSort(const x4SortArguments* args)
 
 //==============================================================================
 
+x4SortStatusCode
+x4SelectionSort(const x4SortArguments* args)
+{
+    x4SortStatusCode status = x4CheckSortArguments(args);
+    if (status != X4_SSC_ARGS_GOOD) { return status; }
+
+    size_t size = args->collection_length - 1;
+    for (size_t i = 1; i < args->collection_length; ++i)
+    {
+        size_t min_index = i - 1;
+        for (size_t j = i; j < args->collection_length; ++j)
+        {
+            void* lhs = (args->collection + min_index * args->element_size);
+            void* rhs = (args->collection + j * args->element_size);
+            if (args->comparator(lhs, rhs))
+            {
+                min_index = j;
+            }
+        }
+        if (min_index != i - 1)
+        {
+            void* lhs = (args->collection + min_index * args->element_size);
+            void* rhs = (args->collection + (i - 1) * args->element_size);
+            x4GenericSwap(lhs, rhs, args->element_size);
+        }
+    }
+
+    return X4_SSC_OK;
+}
+
+//==============================================================================
+
