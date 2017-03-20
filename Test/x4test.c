@@ -89,7 +89,7 @@ main(int argc, char* argv[])
     {
         int arr[] = { 89, 2, -3, 33, 98, -13, -19, -1, 0, 10 };
         size_t arrsz = ARRSZ(arr);
-        puts("* odd-even sort *");
+        puts("* selection sort *");
         printInt(arr, arrsz);
         x4SelectionSort(&(x4SortArguments){.collection = arr,
                                            .collection_length = arrsz,
